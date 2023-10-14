@@ -71,7 +71,18 @@ class _GamePageState extends State<GamePage> {
   }
 
   int _pointsForCurrentRound() {
-    return 999;
+    const int maximumScore = 100;
+    int difference;
+
+    if (_model.current > _model.target) {
+      difference = _model.current - _model.target;
+    } else if (_model.target > _model.current) {
+      difference = _model.target - _model.current;
+    } else {
+      difference = 0;
+    }
+
+    return maximumScore - difference;
   }
 
   void _showAlert(BuildContext context) {
